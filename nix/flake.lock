@@ -1,0 +1,176 @@
+{
+  "nodes": {
+    "gomod2nix": {
+      "inputs": {
+        "nixpkgs": [
+          "teadal",
+          "nixpkgs"
+        ],
+        "utils": "utils"
+      },
+      "locked": {
+        "lastModified": 1662501203,
+        "narHash": "sha256-4BKeqCX2zwgBiTdlc2DjGQ0CttKm0vSw0r/bdFdM/PQ=",
+        "owner": "nix-community",
+        "repo": "gomod2nix",
+        "rev": "89cd0675b96775aa3ee86e7c0cf5bc238dd27976",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "gomod2nix",
+        "type": "github"
+      }
+    },
+    "nixie": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1675425615,
+        "narHash": "sha256-Pi260vZQOrytPzcEB46ZGMz9gU7kTqMdcXEWBZ8xJzA=",
+        "owner": "c0c0n3",
+        "repo": "nixie",
+        "rev": "32de57e3ce7a624f6fb362081545737561acc0df",
+        "type": "github"
+      },
+      "original": {
+        "owner": "c0c0n3",
+        "repo": "nixie",
+        "type": "github"
+      }
+    },
+    "nixie_2": {
+      "inputs": {
+        "nixpkgs": [
+          "teadal",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1675425615,
+        "narHash": "sha256-Pi260vZQOrytPzcEB46ZGMz9gU7kTqMdcXEWBZ8xJzA=",
+        "owner": "c0c0n3",
+        "repo": "nixie",
+        "rev": "32de57e3ce7a624f6fb362081545737561acc0df",
+        "type": "github"
+      },
+      "original": {
+        "owner": "c0c0n3",
+        "repo": "nixie",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1640531271,
+        "narHash": "sha256-WsUVTlPu1k3rXg3dyA0KMNvM9rnCEU0Fx4W0QI4rsXE=",
+        "owner": "NixOs",
+        "repo": "nixpkgs",
+        "rev": "04bd2d1a4700907997be007a2a8f39edd59dac24",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOs",
+        "ref": "nixos-21.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-unstable": {
+      "locked": {
+        "lastModified": 1688231357,
+        "narHash": "sha256-ZOn16X5jZ6X5ror58gOJAxPfFLAQhZJ6nOUeS4tfFwo=",
+        "owner": "NixOs",
+        "repo": "nixpkgs",
+        "rev": "645ff62e09d294a30de823cb568e9c6d68e92606",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOs",
+        "repo": "nixpkgs",
+        "rev": "645ff62e09d294a30de823cb568e9c6d68e92606",
+        "type": "github"
+      }
+    },
+    "nixpkgs-unstable_2": {
+      "locked": {
+        "lastModified": 1688231357,
+        "narHash": "sha256-ZOn16X5jZ6X5ror58gOJAxPfFLAQhZJ6nOUeS4tfFwo=",
+        "owner": "NixOs",
+        "repo": "nixpkgs",
+        "rev": "645ff62e09d294a30de823cb568e9c6d68e92606",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOs",
+        "repo": "nixpkgs",
+        "rev": "645ff62e09d294a30de823cb568e9c6d68e92606",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1687017257,
+        "narHash": "sha256-jbk0Szj1DPe9KwySeMr3KzYqW1JaUKJ6lYwSLMvc1n0=",
+        "owner": "NixOs",
+        "repo": "nixpkgs",
+        "rev": "aaef163eac75c2ac7f882c1fae4e0c08aa18d186",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOs",
+        "ref": "nixos-23.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "nixie": "nixie",
+        "nixpkgs-unstable": "nixpkgs-unstable",
+        "teadal": "teadal"
+      }
+    },
+    "teadal": {
+      "inputs": {
+        "gomod2nix": "gomod2nix",
+        "nixie": "nixie_2",
+        "nixpkgs": "nixpkgs_2",
+        "nixpkgs-unstable": "nixpkgs-unstable_2"
+      },
+      "locked": {
+        "dir": "nix",
+        "lastModified": 1689530844,
+        "narHash": "sha256-1FQXw2GQxZmeWuk4YtA5pXR4STn4WPrO2yhxDChzJx4=",
+        "owner": "c0c0n3",
+        "repo": "teadal.proto",
+        "rev": "4eebacf7ac28765ca63c0b653293d4b515157553",
+        "type": "github"
+      },
+      "original": {
+        "dir": "nix",
+        "owner": "c0c0n3",
+        "repo": "teadal.proto",
+        "type": "github"
+      }
+    },
+    "utils": {
+      "locked": {
+        "lastModified": 1653893745,
+        "narHash": "sha256-0jntwV3Z8//YwuOjzhV2sgJJPt+HY6KhU7VZUL0fKZQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "1ed9fb1935d260de5fe1c2f7ee0ebaae17ed2fa1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
