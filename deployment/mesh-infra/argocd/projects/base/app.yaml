@@ -6,7 +6,7 @@ metadata:
 spec:
   project: mesh-infra
   source:
-    repoURL: https://github.com/orchestracities/Cylcomed-IaC
+    repoURL: https://github.com/Valecant/k8sTest.git
     targetRevision: HEAD
     path: deployment/mesh-infra/app
   destination:
