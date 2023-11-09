@@ -4,5 +4,4 @@ kind: Kustomization
 resources:
 - data_policy-config.yaml		
 - data_policy.yaml	
-- data_policy-ingress.yaml			
 - data_policy-secret.yaml		
