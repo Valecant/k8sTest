@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
 - data_policy/
 - reccommender_back/
+- reccommender_UI/

@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reccommenderui-deployment
+  labels:
+    app: reccommenderui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reccommenderui
+  template:
+    metadata:
+      labels:
+        app: reccommenderui
+    spec:
+      containers:
+      - name: reccommenderui
+        image: valecant/recommender_ui:first
+        ports:
+        - containerPort: 3000
+        env:
+        - name: REACT_APP_AMON_URL
+          valueFrom:
+            secretKeyRef:
+              name: reccommenderui-secret
+              key: REACT_APP_AMON_URL
+        - name: REACT_APP_DEFAULT_TENANT
+          valueFrom:
+            secretKeyRef:
+              name: reccommenderui-secret
+              key: REACT_APP_DEFAULT_TENANT
+        - name: REACT_APP_DEFAULT_PATH
+          valueFrom:
+            secretKeyRef:
+              name: reccommenderui-secret
+              key: REACT_APP_DEFAULT_PATH
+        - name: REACT_APP_RECOMMENDER
+          valueFrom:
+            secretKeyRef:
+              name: reccommenderui-secret
+              key: REACT_APP_RECOMMENDER
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: reccommenderui-service
+spec:
+  type: NodePort
+  selector:
+    app: reccommenderui
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      nodePort: 30300
