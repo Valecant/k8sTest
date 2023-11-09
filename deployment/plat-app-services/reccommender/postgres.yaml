@@ -1,29 +1,9 @@
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    app: postgres
-  name: postgres
-spec:
-  ports:
-  # PostgreSQL wire protocol clients.
-  - port: 5432
-    targetPort: 5432
-    name: postgres
-  selector:
-    app: postgres
-
----
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres
+  name: postgres-deployment
   labels:
     app: postgres
-  annotations:
-    # Tell Reloader to bounce Postgres whenever user credentials change.
-    secret.reloader.stakater.com/reload: "postgres-users"
 spec:
   replicas: 1
   selector:
@@ -36,11 +16,19 @@ spec:
     spec:
       containers:
       - name: postgres
-        image: postgres:15.3
-        imagePullPolicy: IfNotPresent
+        image: postgres:14
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
         ports:
         - containerPort: 5432
-          name: postgres
+        volumeMounts:
+        - name: pv0001-storage
+          mountPath: /var/lib/postgresql/data
         env:
         - name: POSTGRES_USER
           valueFrom:
@@ -57,12 +45,20 @@ spec:
             secretKeyRef:
               name: postgres-secret
               key: postgres-DB
-        - name: PGDATA
-          value: /var/lib/postgresql/data/pgdata
-        volumeMounts:
-        - name: pg-volume
-          mountPath: /var/lib/postgresql/data
-      volumes:
-      - name: pg-volume
+      volumes: 
+      - name: pv0001-storage
         persistentVolumeClaim:
-          claimName: postgres-pvc
+          claimName: task-pv-claim
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service
+spec:
+  selector:
+    app: postgres
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
