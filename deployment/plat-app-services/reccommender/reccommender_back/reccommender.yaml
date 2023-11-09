@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reccommender-deployment
+  labels:
+    app: reccommender
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reccommender
+  template:
+    metadata:
+      labels:
+        app: reccommender
+    spec:
+      containers:
+      - name: reccommender
+        image: cerfoglg/recommender
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "500m"
+          limits:
+            memory: "256Mi"
+            cpu: "1000m"
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: reccommender-service
+spec:
+  type: NodePort
+  selector:
+    app: reccommender
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 30100
