@@ -15,6 +15,24 @@ spec:
   - hosts:
     - "*"
     port:
+      name: http
+      number: 8075
+      protocol: HTTP
+  - hosts:
+    - "*"
+    port:
+      name: http
+      number: 8080
+      protocol: HTTP
+  - hosts:
+    - "*"
+    port:
+      name: http
+      number: 3000
+      protocol: HTTP
+  - hosts:
+    - "*"
+    port:
       name: postgres
       number: 5432
       protocol: TCP
