@@ -32,14 +32,42 @@ spec:
         host: httpbin.default.svc.cluster.local
         port:
           number: 8000
-  - match:  # NOTE (2)
+  - match:  # NOTE (1)
     - uri:
-        prefix: /keycloak
+        prefix: /reccommender/
+    - uri:
+        prefix: /reccommender
+    rewrite:
+      uri: /
     route:
     - destination:
-        host: keycloak.default.svc.cluster.local
+        host: reccommender-service.default.svc.cluster.local
         port:
           number: 8080
+  - match:  # NOTE (1)
+    - uri:
+        prefix: /reccommender_ui/
+    - uri:
+        prefix: /reccommender_ui
+    rewrite:
+      uri: /
+    route:
+    - destination:
+        host: reccommenderui-service.default.svc.cluster.local
+        port:
+          number: 3000
+  - match:  # NOTE (1)
+    - uri:
+        prefix: /datapolicy-service/
+    - uri:
+        prefix: /datapolicy-service
+    rewrite:
+      uri: /
+    route:
+    - destination:
+        host: datapolicy-service.default.svc.cluster.local
+        port:
+          number: 8075
   - match:  # NOTE (1)
     - uri:
         prefix: /minio/

@@ -85,4 +85,4 @@ spec:
     - protocol: TCP
       port: 8075
       targetPort: 8075
-      nodePort: 30100
+      nodePort: 8075
