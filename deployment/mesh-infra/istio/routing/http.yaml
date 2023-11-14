@@ -46,9 +46,9 @@ spec:
           number: 8080
   - match:  # NOTE (1)
     - uri:
-        prefix: /reccommender_ui/
+        prefix: /ui/
     - uri:
-        prefix: /reccommender_ui
+        prefix: /ui
     rewrite:
       uri: /
     route:
