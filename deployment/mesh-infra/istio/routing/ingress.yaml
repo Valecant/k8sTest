@@ -16,17 +16,17 @@ spec:
      - "reccommender.ui"
     port:
       name: ui
-      number: 3000
+      number: 80
       protocol: HTTP
   - hosts:                                    
      - "reccommender.back"
     port:
       name: back
-      number: 8082
+      number: 80
       protocol: HTTP
   - hosts:                                    
      - "reccommender.datapolicy"
     port:
       name: datapolicy
-      number: 8075
+      number: 80
       protocol: HTTP

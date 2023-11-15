@@ -27,7 +27,7 @@ spec:
   - "reccommender.ui"
   http:
   - match:
-    - port: 3000
+    - port: 80
     route:
     - destination:
         host: reccommenderui-service.default.svc.cluster.local
@@ -45,7 +45,7 @@ spec:
   - "reccommender.back"
   http:
   - match:
-    - port: 8082
+    - port: 80
     route:
     - destination:
         host: reccommender-service.default.svc.cluster.local
@@ -63,7 +63,7 @@ spec:
   - "reccommender.datapolicy"
   http:
   - match:
-    - port: 8075
+    - port: 80
     route:
     - destination:
         host: datapolicy-service.default.svc.cluster.local
