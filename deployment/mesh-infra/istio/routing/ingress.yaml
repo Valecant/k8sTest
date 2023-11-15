@@ -1,20 +1,59 @@
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  name: "teadal-gateway"
+  name: "argocd-gateway"
 spec:
   selector:
     istio: ingressgateway
   servers:
-  - hosts:
-    - "*"
+  - hosts:                                    # <----- All hosts we want to be responsible for
+     - "reccommender.localdomain"
     port:
       name: http
       number: 80
       protocol: HTTP
-  - hosts:
-    - "*"
+---
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: "ui-gateway"
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - hosts:                                    # <----- All hosts we want to be responsible for
+     - "reccommender.localdomain"
     port:
-      name: postgres
-      number: 5432
-      protocol: TCP
+      name: http
+      number: 3000
+      protocol: HTTP
+---
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: "back-gateway"
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - hosts:                                    # <----- All hosts we want to be responsible for
+     - "reccommender.localdomain"
+    port:
+      name: http
+      number: 8080
+      protocol: HTTP
+---
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: "datapolicy-gateway"
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - hosts:                                    # <----- All hosts we want to be responsible for
+     - "reccommender.localdomain"
+    port:
+      name: http
+      number: 8075
+      protocol: HTTP

@@ -4,83 +4,83 @@ metadata:
   name: "http-virtual-service"
 spec:
   gateways:
-  - "teadal-gateway"
+  - "argocd-gateway"
   hosts:
-  - "*"
+  - "reccommender.localdomain"
   http:
   - match:  # NOTE (1)
     - uri:
-        prefix: /argocd/
-    - uri:
         prefix: /argocd
     rewrite:
-      uri: /
+      uri: /argocd/
     route:
     - destination:
         host: argocd-server.argocd.svc.cluster.local
         port:
           number: 80
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: "ui-virtualservice"
+spec:
+  gateways:
+  - "ui-gateway"
+  hosts:
+  - "reccommender.localdomain"
+  http:
   - match:  # NOTE (1)
-    - uri:
-        prefix: /httpbin/
-    - uri:
-        prefix: /httpbin
-    rewrite:
-      uri: /
-    route:
-    - destination:
-        host: httpbin.default.svc.cluster.local
-        port:
-          number: 8000
-  - match:  # NOTE (1)
-    - uri:
-        prefix: /reccommender/
-    - uri:
-        prefix: /reccommender
-    rewrite:
-      uri: /
-    route:
-    - destination:
-        host: reccommender-service.default.svc.cluster.local
-        port:
-          number: 8080
-  - match:  # NOTE (1)
-    - uri:
-        prefix: /ui/
     - uri:
         prefix: /ui
     rewrite:
-      uri: /
+      uri: /ui/
     route:
     - destination:
         host: reccommenderui-service.default.svc.cluster.local
         port:
           number: 3000
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: "reccommender-virtualservice"
+spec:
+  gateways:
+  - "back-gateway"
+  hosts:
+  - "reccommender.localdomain"
+  http:
   - match:  # NOTE (1)
     - uri:
-        prefix: /datapolicy-service/
-    - uri:
-        prefix: /datapolicy-service
+        prefix: /back
     rewrite:
-      uri: /
+      uri: /back/
     route:
     - destination:
-        host: datapolicy-service.default.svc.cluster.local
+        host: reccommender-service.default.svc.cluster.local
+        port:
+          number: 8080
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: "datapolicy-virtualservice"
+spec:
+  gateways:
+  - "datapolicy-gateway"
+  hosts:
+  - "reccommender.localdomain"
+  http:
+  - match:  # NOTE (1)
+    - uri:
+        prefix: /datapolicy
+    rewrite:
+      uri: /datapolicy/
+    route:
+    - destination:
+        host:  datapolicy-service.default.svc.cluster.local
         port:
           number: 8075
-  - match:  # NOTE (1)
-    - uri:
-        prefix: /minio/
-    - uri:
-        prefix: /minio
-    rewrite:
-      uri: /
-    route:
-    - destination:
-        host: minio.minio-operator.svc.cluster.local
-        port:
-          number: 80
-
 # NOTE
 # 1. URL rewriting. We use overlapping prefixes to make sure `/x`, `/x/`
 # and `/x/p` get rewritten to `/`, `/` and `/p` respectively. Istio will
