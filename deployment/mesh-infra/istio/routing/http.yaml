@@ -4,15 +4,12 @@ metadata:
   name: "http-virtual-service"
 spec:
   gateways:
-  - "argocd-gateway"
+  - default-gateway
   hosts:
   - "reccommender.argo"
   http:
-  - match:  # NOTE (1)
-    - uri:
-        prefix: /argocd
-    rewrite:
-      uri: /argocd/
+  - match:
+    - port: 80
     route:
     - destination:
         host: argocd-server.argocd.svc.cluster.local
@@ -25,15 +22,12 @@ metadata:
   name: "ui-virtualservice"
 spec:
   gateways:
-  - "ui-gateway"
+  - default-gateway
   hosts:
   - "reccommender.ui"
   http:
-  - match:  # NOTE (1)
-    - uri:
-        prefix: /ui
-    rewrite:
-      uri: /ui/
+  - match:
+    - port: 3000
     route:
     - destination:
         host: reccommenderui-service.default.svc.cluster.local
@@ -46,20 +40,17 @@ metadata:
   name: "reccommender-virtualservice"
 spec:
   gateways:
-  - "back-gateway"
+  - default-gateway
   hosts:
   - "reccommender.back"
   http:
-  - match:  # NOTE (1)
-    - uri:
-        prefix: /back
-    rewrite:
-      uri: /back/
+  - match:
+    - port: 8082
     route:
     - destination:
         host: reccommender-service.default.svc.cluster.local
         port:
-          number: 8080
+          number: 8082
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
@@ -67,18 +58,15 @@ metadata:
   name: "datapolicy-virtualservice"
 spec:
   gateways:
-  - "datapolicy-gateway"
+  - default-gateway
   hosts:
   - "reccommender.datapolicy"
   http:
-  - match:  # NOTE (1)
-    - uri:
-        prefix: /datapolicy
-    rewrite:
-      uri: /datapolicy/
+  - match:
+    - port: 8075
     route:
     - destination:
-        host:  datapolicy-service.default.svc.cluster.local
+        host: datapolicy-service.default.svc.cluster.local
         port:
           number: 8075
 # NOTE

@@ -81,6 +81,18 @@ spec:
               nodePort: 5432
               targetPort: 5432
               name: postgres
+            - port: 8082
+              nodePort: 8082
+              targetPort: 8082
+              name: back
+            - port: 3000
+              nodePort: 3000
+              targetPort: 3000
+              name: ui
+            - port: 8075
+              nodePort: 8075
+              targetPort: 8075
+              name: datapolicy
             - port: 31400
               targetPort: 31400
               name: tcp

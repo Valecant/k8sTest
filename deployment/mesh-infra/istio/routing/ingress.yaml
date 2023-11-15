@@ -1,59 +1,32 @@
 apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 metadata:
-  name: "argocd-gateway"
+  name: "default-gateway"
 spec:
   selector:
     istio: ingressgateway
   servers:
-  - hosts:                                    # <----- All hosts we want to be responsible for
+  - hosts:                                  
      - "reccommender.argo"
     port:
-      name: http
+      name: argo
       number: 80
       protocol: HTTP
----
-apiVersion: networking.istio.io/v1beta1
-kind: Gateway
-metadata:
-  name: "ui-gateway"
-spec:
-  selector:
-    istio: ingressgateway
-  servers:
-  - hosts:                                    # <----- All hosts we want to be responsible for
+  - hosts:                                    
      - "reccommender.ui"
     port:
-      name: http
+      name: ui
       number: 3000
       protocol: HTTP
----
-apiVersion: networking.istio.io/v1beta1
-kind: Gateway
-metadata:
-  name: "back-gateway"
-spec:
-  selector:
-    istio: ingressgateway
-  servers:
-  - hosts:                                    # <----- All hosts we want to be responsible for
+  - hosts:                                    
      - "reccommender.back"
     port:
-      name: http
-      number: 8080
+      name: back
+      number: 8082
       protocol: HTTP
----
-apiVersion: networking.istio.io/v1beta1
-kind: Gateway
-metadata:
-  name: "datapolicy-gateway"
-spec:
-  selector:
-    istio: ingressgateway
-  servers:
-  - hosts:                                    # <----- All hosts we want to be responsible for
+  - hosts:                                    
      - "reccommender.datapolicy"
     port:
-      name: http
+      name: datapolicy
       number: 8075
       protocol: HTTP
