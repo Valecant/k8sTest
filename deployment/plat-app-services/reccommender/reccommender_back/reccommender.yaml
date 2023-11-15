@@ -32,7 +32,7 @@ kind: Service
 metadata:
   name: reccommender-service
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: reccommender
   ports:

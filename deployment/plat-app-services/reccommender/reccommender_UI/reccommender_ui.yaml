@@ -46,7 +46,7 @@ kind: Service
 metadata:
   name: reccommenderui-service
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: reccommenderui
   ports:

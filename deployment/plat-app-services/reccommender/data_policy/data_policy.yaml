@@ -78,7 +78,7 @@ kind: Service
 metadata:
   name: datapolicy-service
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: datapolicy
   ports:
