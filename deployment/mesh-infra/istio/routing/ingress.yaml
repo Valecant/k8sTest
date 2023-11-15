@@ -7,7 +7,7 @@ spec:
     istio: ingressgateway
   servers:
   - hosts:                                    # <----- All hosts we want to be responsible for
-     - "reccommender.localdomain"
+     - "reccommender.argo"
     port:
       name: http
       number: 80
@@ -22,7 +22,7 @@ spec:
     istio: ingressgateway
   servers:
   - hosts:                                    # <----- All hosts we want to be responsible for
-     - "reccommender.localdomain"
+     - "reccommender.ui"
     port:
       name: http
       number: 3000
@@ -37,7 +37,7 @@ spec:
     istio: ingressgateway
   servers:
   - hosts:                                    # <----- All hosts we want to be responsible for
-     - "reccommender.localdomain"
+     - "reccommender.back"
     port:
       name: http
       number: 8080
@@ -52,7 +52,7 @@ spec:
     istio: ingressgateway
   servers:
   - hosts:                                    # <----- All hosts we want to be responsible for
-     - "reccommender.localdomain"
+     - "reccommender.datapolicy"
     port:
       name: http
       number: 8075

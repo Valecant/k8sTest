@@ -6,7 +6,7 @@ spec:
   gateways:
   - "argocd-gateway"
   hosts:
-  - "reccommender.localdomain"
+  - "reccommender.argo"
   http:
   - match:  # NOTE (1)
     - uri:
@@ -27,7 +27,7 @@ spec:
   gateways:
   - "ui-gateway"
   hosts:
-  - "reccommender.localdomain"
+  - "reccommender.ui"
   http:
   - match:  # NOTE (1)
     - uri:
@@ -48,7 +48,7 @@ spec:
   gateways:
   - "back-gateway"
   hosts:
-  - "reccommender.localdomain"
+  - "reccommender.back"
   http:
   - match:  # NOTE (1)
     - uri:
@@ -69,7 +69,7 @@ spec:
   gateways:
   - "datapolicy-gateway"
   hosts:
-  - "reccommender.localdomain"
+  - "reccommender.datapolicy"
   http:
   - match:  # NOTE (1)
     - uri:
