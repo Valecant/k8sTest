@@ -7,9 +7,9 @@ spec:
     istio: ingressgateway
   servers:
   - hosts:                                  
-     - "reccommender.argo"
+     - "reccommender.default"
     port:
-      name: argo
+      name: http
       number: 80
       protocol: HTTP
   - hosts:                                    

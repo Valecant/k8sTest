@@ -54,12 +54,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  labels:
+    app: postgres
   name: postgres-service
 spec:
+  ports:
+  # PostgreSQL wire protocol clients.
+  - port: 5432
+    targetPort: 5432
+    name: postgres
   selector:
     app: postgres
-  type: LoadBalancer
-  ports:
-    - protocol: TCP
-      port: 5432
-      targetPort: 5432
