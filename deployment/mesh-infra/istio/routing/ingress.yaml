@@ -7,26 +7,9 @@ spec:
     istio: ingressgateway
   servers:
   - hosts:                                  
-     - "reccommender.default"
+     - "*.reccommender.io"
     port:
       name: http
       number: 80
       protocol: HTTP
-  - hosts:                                    
-     - "reccommender.ui"
-    port:
-      name: ui
-      number: 80
-      protocol: HTTP
-  - hosts:                                    
-     - "reccommender.back"
-    port:
-      name: back
-      number: 80
-      protocol: HTTP
-  - hosts:                                    
-     - "reccommender.datapolicy"
-    port:
-      name: datapolicy
-      number: 80
-      protocol: HTTP
+ 

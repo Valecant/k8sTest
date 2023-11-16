@@ -6,7 +6,7 @@ spec:
   gateways:
   - "default-gateway"
   hosts:
-  - "reccommender.default"
+  - "argo.reccommender.io"
   http:
   - match:  # NOTE (1)
     - uri:
@@ -30,7 +30,7 @@ spec:
   gateways:
   - default-gateway
   hosts:
-  - "reccommender.ui"
+  - "ui.reccommender.io"
   http:
   - match:
     - port: 80
@@ -48,7 +48,7 @@ spec:
   gateways:
   - default-gateway
   hosts:
-  - "reccommender.back"
+  - "back.reccommender.io"
   http:
   - match:
     - port: 80
@@ -66,7 +66,7 @@ spec:
   gateways:
   - default-gateway
   hosts:
-  - "reccommender.datapolicy"
+  - "datapolicy.reccommender.io"
   http:
   - match:
     - port: 80
