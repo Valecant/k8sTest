@@ -9,12 +9,7 @@ spec:
   - "argo.reccommender.io"
   http:
   - match:  # NOTE (1)
-    - uri:
-        prefix: /argocd/
-    - uri:
-        prefix: /argocd
-    rewrite:
-      uri: /
+    - port: 80
     route:
     - destination:
         host: argocd-server.argocd.svc.cluster.local
