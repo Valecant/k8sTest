@@ -1,15 +1,19 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: "http-virtual-service"
+  name: "argo-virtualservice"
 spec:
   gateways:
-  - default-gateway
+  - "default-gateway"
   hosts:
   - "reccommender.argo"
   http:
-  - match:
+  - match: # NOTE (1)
+    - uri:
+        prefix: /argocd/
     - port: 80
+    rewrite:
+      uri: /
     route:
     - destination:
         host: argocd-server.argocd.svc.cluster.local

@@ -3,7 +3,6 @@ kind: Kustomization
 
 resources:
 - postgres-config.yaml		
-- postgres-volume.yaml	
 - postgres-secret.yaml		
 - postgres.yaml
 - postgres-volume-claim.yaml
