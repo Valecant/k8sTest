@@ -16,36 +16,27 @@ spec:
     spec:
       containers:
       - name: postgres
-        image: postgres:14
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "250m"
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
+        image: postgres:15.3
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5432
-        volumeMounts:
-        - name: pg-volume
-          mountPath: /var/lib/postgresql/data
+          name: postgres
         env:
-        - name: POSTGRES_USER
-          valueFrom:
-            secretKeyRef:
-              name: postgres-secret
-              key: postgres-user
         - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: postgres-secret
-              key: postgres-password
+              name: postgres-users
+              key: postgres.password
         - name: POSTGRES_DB
           valueFrom:
             secretKeyRef:
-              name: postgres-secret
-              key: postgres-DB
-      
+              name: postgres-users
+              key: postgres.db
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
+        volumeMounts:
+        - name: pg-volume
+          mountPath: /var/lib/postgresql/data
       volumes:
       - name: pg-volume
         persistentVolumeClaim:
