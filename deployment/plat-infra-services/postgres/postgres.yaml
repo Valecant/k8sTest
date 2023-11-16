@@ -27,7 +27,7 @@ spec:
         ports:
         - containerPort: 5432
         volumeMounts:
-        - name: pv0001-storage
+        - name: pg-volume
           mountPath: /var/lib/postgresql/data
         env:
         - name: POSTGRES_USER
@@ -45,8 +45,9 @@ spec:
             secretKeyRef:
               name: postgres-secret
               key: postgres-DB
-      volumes: 
-      - name: pv0001-storage
+      
+      volumes:
+      - name: pg-volume
         persistentVolumeClaim:
           claimName: postgres-pvc
 ---
