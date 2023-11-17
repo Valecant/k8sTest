@@ -6,5 +6,5 @@ resources:
 # - jaeger/
 - kiali/
 # - prometheus/
-- routing/
+# - routing/
 # - skywalking/

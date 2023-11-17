@@ -32,10 +32,11 @@ kind: Service
 metadata:
   name: reccommender-service
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: reccommender
   ports:
     - protocol: TCP
       port: 8082
       targetPort: 8082
+      nodePort: 8082

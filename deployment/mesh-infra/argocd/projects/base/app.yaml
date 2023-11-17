@@ -7,7 +7,7 @@ spec:
   project: mesh-infra
   source:
     repoURL: https://github.com/Valecant/k8sTest.git
-    targetRevision: path
+    targetRevision: ports
     path: deployment/mesh-infra/app
   destination:
     server: https://kubernetes.default.svc

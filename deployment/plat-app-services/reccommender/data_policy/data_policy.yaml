@@ -78,10 +78,11 @@ kind: Service
 metadata:
   name: datapolicy-service
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: datapolicy
   ports:
     - protocol: TCP
       port: 8075
       targetPort: 8075
+      nodePort: 8075
