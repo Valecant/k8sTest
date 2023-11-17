@@ -27,21 +27,15 @@ spec:
         ports:
         - containerPort: 8075
         env:
-        - name: POSTGRES_USER
-          valueFrom:
-            secretKeyRef:
-              name: datapolicy-secret
-              key: postgres.user
-        - name: POSTGRES_PASSWORD
+        - name: DB_USER
+          value: "postgres"
+        - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
               name: postgres-users
               key: postgres.password
-        - name: POSTGRES_DB
-          valueFrom:
-            secretKeyRef:
-              name: postgres-users
-              key: postgres.db
+        - name: DB_NAME
+          value: "anubis"
         - name: CORS_ALLOWED_ORIGINS
           valueFrom:
             secretKeyRef:
@@ -58,15 +52,9 @@ spec:
               name: datapolicy-secret
               key: CORS_ALLOWED_HEADERS
         - name: DB_TYPE
-          valueFrom:
-            secretKeyRef:
-              name: datapolicy-secret
-              key: DB_TYPE
+          value: "postgres"
         - name: DB_HOST
-          valueFrom:
-            secretKeyRef:
-              name: datapolicy-secret
-              key: DB_HOST
+          value: "postgres-service.default.svc.cluster.local"
         - name: KEYCLOACK_ENABLED
           valueFrom:
             secretKeyRef:

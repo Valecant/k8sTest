@@ -16,3 +16,10 @@ sudo chmod -R 777 /mnt/k8s-data
     kubectl label namespace default istio-injection=enabled
      kustomize build mesh-infra/istio | kubectl apply -f -
 
+
+
+127.0.0.1    argo.reccommender.io
+127.0.0.1    ui.reccommender.io
+127.0.0.1    back.reccommender.io
+127.0.0.1    datapolicy.reccommender.io
+
