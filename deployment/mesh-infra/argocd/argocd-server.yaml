@@ -6,17 +6,3 @@ metadata:
     # Tell Reloader to bounce the Argo CD server whenever the SSO config
     # and built-in admin credentials change.
     secret.reloader.stakater.com/reload: "argocd-secret"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: argo-service
-spec:
-  type: NodePort
-  selector:
-    app: argocd-server
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
-      nodePort: 80
