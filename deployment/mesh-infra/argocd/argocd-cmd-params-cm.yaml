@@ -15,7 +15,7 @@ data:
   # See:
   # - https://argo-cd.readthedocs.io/en/stable/operator-manual/ingress
   # - NOTE (1)
-  server.basehref: "/"
+  server.basehref: "/argocd"
 
   # Run Argo CD Server without TLS. We do this because Istio handles TLS
   # termination and mutual TLS among mesh services.

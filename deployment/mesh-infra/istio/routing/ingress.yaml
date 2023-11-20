@@ -6,10 +6,16 @@ spec:
   selector:
     istio: ingressgateway
   servers:
-  - hosts:                                  
-     - "*.reccommender.io"
+  - hosts:
+    - "*"
     port:
       name: http
       number: 80
       protocol: HTTP
+  - hosts:
+    - "*"
+    port:
+      name: postgres
+      number: 5432
+      protocol: TCP
  
