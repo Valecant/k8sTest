@@ -21,7 +21,7 @@ spec:
         - containerPort: 3000
         env:
         - name: REACT_APP_AMON_URL
-          value: "http://datapolicy.reccommender.io/"
+          value: "http://localhost:8075/"
         - name: REACT_APP_DEFAULT_TENANT
           valueFrom:
             secretKeyRef:
@@ -33,7 +33,7 @@ spec:
               name: reccommenderui-secret
               key: REACT_APP_DEFAULT_PATH
         - name: REACT_APP_RECOMMENDER
-          value: "http://back.reccommender.io/"
+          value: "http://localhost:8082/"
 ---
 apiVersion: v1
 kind: Service
