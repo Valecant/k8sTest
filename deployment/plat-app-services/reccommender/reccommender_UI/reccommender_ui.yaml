@@ -20,6 +20,8 @@ spec:
         ports:
         - containerPort: 3000
         env:
+        - name: PUBLIC_URL
+          value: "/ui"
         - name: REACT_APP_AMON_URL
           value: "http://localhost/datapolicy"
         - name: REACT_APP_DEFAULT_TENANT

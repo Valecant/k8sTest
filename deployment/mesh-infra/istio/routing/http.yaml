@@ -58,11 +58,7 @@ spec:
           number: 8075
   - match:  # NOTE (2)
     - uri:
-        prefix: /ui/
-    - uri:
         prefix: /ui
-    rewrite:
-      uri: /
     route:
     - destination:
         host: reccommenderui-service.default.svc.cluster.local
